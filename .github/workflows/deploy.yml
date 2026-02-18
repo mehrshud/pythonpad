@@ -1,0 +1,65 @@
+import logging
+from typing import Dict
+from github import Github
+from fastapi import FastAPI
+from src.models import User
+from src.config import Config
+from src.utils import utils
+
+logger = logging.getLogger(__name__)
+
+def deploy_workflow(event: Dict[str, str], context: Dict[str, str]) -> None:
+    """
+    Deploy workflow function.
+
+    Args:
+    - event (Dict[str, str]): The event that triggered the workflow.
+    - context (Dict[str, str]): The context of the workflow.
+
+    Returns:
+    - None
+    """
+    try:
+        # Initialize FastAPI app
+        app = FastAPI()
+
+        # Initialize GitHub client
+        g = Github(Config.GITHUB_TOKEN)
+
+        # Get repository and commit
+        repo = g.get_repo(Config.REPO_NAME)
+        commit = repo.get_commit(event["sha"])
+
+        # Deploy the application
+        logger.info("Deploying the application...")
+        utils.deploy_app(app, repo, commit)
+
+        logger.info("Deployment successful!")
+
+    except Exception as e:
+        logger.error(f"Error during deployment: {str(e)}")
+        raise
+
+def main() -> None:
+    """
+    Main function.
+
+    Returns:
+    - None
+    """
+    try:
+        # Initialize configuration
+        config = Config()
+
+        # Initialize user and project
+        user = User(id="123", email="user@example.com")
+        project = {"id": "123", "name": "example"}
+
+        # Trigger the deploy workflow
+        deploy_workflow(event={"sha": "abc"}, context={"repo": "example"})
+
+    except Exception as e:
+        logger.error(f"Error: {str(e)}")
+
+if __name__ == "__main__":
+    main()
