@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonpad
+  labels:
+    app: pythonpad
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pythonpad
+  template:
+    metadata:
+      labels:
+        app: pythonpad
+    spec:
+      containers:
+        - name: pythonpad
+          image: ghcr.io/mehrshud/pythonpad:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: pythonpad-config
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
