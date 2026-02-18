@@ -1,0 +1,129 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# IDE
+.vscode/
+*.vscode/
+#.vscode/settings.json
+#.vscode/tasks.json
+#.vscode/launch.json
+#.vscode/*.json
+
+# PyCharm
+.idea/
+*.iml
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Python packages
+*.egg-info/
+dist/
+build/
+*.egg
+
+# FastAPI
+.fastapi/
+
+# Pandas
+# No specific files, but you may want to ignore data files
+# *.csv
+# *.pickle
+# *.pkl
+
+# DuckDB
+.duckdb/
+
+# OS
+.DS_Store  # macOS
+Thumbs.db  # Windows
+ehthumbs.db  # Windows
+Desktop.ini  # Windows
+
+# Docker
+Dockerfile
+docker-compose*.yml
+docker-compose*.yaml
+
+# Secrets
+secrets.json
+secrets.yaml
+config.json
+config.yaml
+.env
+
+# General
+*.log
+*.tmp
+*.lock
+*.cfg
+*.conf
+*.credentials
+*.secret
+*.key
+*.sql
+__init__.py
+requirements.txt
+requirements-dev.txt
+test_requirements.txt
+README.md
+LICENSE
+CHANGELOG.md
+README
+AUTHORS
+CONTRIBUTORS
+VERSION
+*.exe
+*.dll
+ node_modules/
+ build/
+ dist/
+ .env
+ env/
+ venv/
+ .gitattributes
+ .gitmodules
+
+# Virtual Environment
+venv/
+env/
+
+# API keys and credentials
+api_keys.json
+credentials.json
+secret.json
+token.txt
+
+# Data
+data/
+raw_data/
+processed_data/
+models/ 
+
+# Commit message
+.gitmessage
+
+# Documentation
+docs/
+doc/
+documentation/ 
+
+# Unit Tests and Integration Tests
+tests/
+test/
+coverage/
+reports/ 
+
+# Linter and Formatter
+.lint/
+.mypy_cache/
+.pytype/ 
+# Other files and folders
+notebooks/
+examples/
+assets/
